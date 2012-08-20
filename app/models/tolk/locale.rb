@@ -34,8 +34,8 @@ module Tolk
       'nl'    => 'Dutch',
       'no'    => 'Norwegian',
       'pl'    => 'Polish',
-      'pt-br' => 'Portuguese (Brazilian)',
-      'pt-PT' => 'Portuguese (Portugal)',
+      'pt_BR' => 'Portuguese (Brazilian)',
+      'pt_PT' => 'Portuguese (Portugal)',
       'ro'    => 'Romanian',
       'ru'    => 'Russian',
       'se'    => 'Swedish',
@@ -47,8 +47,8 @@ module Tolk
       'tr'    => 'Turkish',
       'uk'    => 'Ukrainian',
       'vi'    => 'Vietnamese',
-      'zh-CN' => 'Chinese (Simplified)',
-      'zh-TW' => 'Chinese (Traditional)'
+      'zh_CN' => 'Chinese (Simplified)',
+      'zh_TW' => 'Chinese (Traditional)'
     }
 
     has_many :phrases, :through => :translations, :class_name => 'Tolk::Phrase'
@@ -180,7 +180,7 @@ module Tolk
     end
 
     def to_param
-      name.parameterize
+      name
     end
 
     def primary?
