@@ -32,10 +32,10 @@ namespace :tolk do
   end
 
   desc 'removes secondary translations for given key'
-  task {:reset_translation_key => :environment}, :key do |t, args|
+  task :reset_translation_key, :key do |t, args|
+    Rake::Task[:environment].invoke
     phrase_key = args[:key]
-    Tolk::Phrase.find_by_key(phrase_key).tap do |phrase|
-      phrase.translations.reset_secondary
-    end
+    phrase = Tolk::Phrase.find_by_key(phrase_key)
+    phrase.translations.reset_secondary
   end
 end
