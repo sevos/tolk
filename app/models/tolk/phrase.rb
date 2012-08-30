@@ -12,8 +12,16 @@ module Tolk
         to_a.detect {|t| t.locale_id == Tolk::Locale.primary_locale.id}
       end
 
+      def secondary
+        to_a.select {|t| t.locale_id != Tolk::Locale.primary_locale.id}
+      end
+
       def for(locale)
         to_a.detect {|t| t.locale_id == locale.id}
+      end
+
+      def reset_secondary
+        secondary.each { |t| t.destroy }
       end
     end
 
