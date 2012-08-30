@@ -46,7 +46,7 @@ module Tolk
         phrases = Tolk::Phrase.all
 
         translations.each do |key, value|
-          echo "syncing #{key}"
+          puts "syncing #{key}"
           # Create phrase and primary translation if missing
           existing_phrase = phrases.detect {|p| p.key == key} || Tolk::Phrase.create!(:key => key)
           translation = existing_phrase.translations.primary || primary_locale.translations.build(:phrase_id => existing_phrase.id)
