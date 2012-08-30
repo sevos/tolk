@@ -32,7 +32,7 @@ namespace :tolk do
   end
 
   desc 'removes secondary translations for given key'
-  task [:reset_translation_key, :key] => :environment do |t, args|
+  task {:reset_translation_key => :environment}, :key do |t, args|
     phrase_key = args[:key]
     Tolk::Phrase.find_by_key(phrase_key).tap do |phrase|
       phrase.translations.reset_secondary
