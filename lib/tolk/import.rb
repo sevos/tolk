@@ -22,7 +22,7 @@ module Tolk
 
         data.each do |key, value|
           phrase = phrases.detect {|p| p.key == key}
-
+          echo "#{locale_name}: importing #{key}"
           if phrase
             translation = locale.translations.new(:text => value, :phrase => phrase)
             count = count + 1 if translation.save
